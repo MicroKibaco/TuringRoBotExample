@@ -1,5 +1,11 @@
 package com.asiainfo.tulingrobot.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
+import com.asiainfo.tulingrobot.bean.ChatMessage;
+import com.asiainfo.tulingrobot.bean.Result;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Date;
 
 /**
  * 封编写一个工具类实现消息的发送和接收到
@@ -20,6 +27,36 @@ public class HttpUtils {
     //534dc342ad15885dffc10d7b5f813451 hyman
     private  static  final  String API_KEY = "534dc342ad15885dffc10d7b5f813451";
     private static int TIME_REQUEST = 5 * 1000;;
+
+
+    /**
+     * 发送一个消息,得到的返回的信息
+     * @param msg
+     * @return
+     */
+    public static ChatMessage sendMessage (String msg){
+
+        ChatMessage chatMessage = new ChatMessage();
+
+        String jsonRes = doGet(msg);
+        Gson gson = new Gson();
+        Result result =  null;
+
+        try {
+
+            gson.fromJson(jsonRes, Result.class);
+            chatMessage.setMsg(result.getText());
+
+        } catch (JsonSyntaxException e) {
+
+            chatMessage.setMsg("服务器繁忙,请稍后再试!!!");
+        }
+
+        chatMessage.setDate(new Date());
+        chatMessage.setType(ChatMessage.Type.INCOMING);
+
+        return chatMessage;
+    }
 
     public static String doGet(String msg){
 

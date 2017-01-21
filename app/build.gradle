@@ -28,4 +28,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'org.testng:testng:6.9.6'
     compile 'com.android.support.test:runner:0.5'
+    compile 'com.google.code.gson:gson:2.3.1'
 }
