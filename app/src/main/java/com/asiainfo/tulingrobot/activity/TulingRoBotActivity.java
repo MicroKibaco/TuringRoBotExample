@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class TulingRoBotActivity extends Activity implements View.OnClickListener {
+public class TulingRoBotActivity extends Activity  {
 
     private ListView mChatListview;
     private EditText mInputMsg;
@@ -56,38 +56,16 @@ public class TulingRoBotActivity extends Activity implements View.OnClickListene
     }
 
     private void initListener() {
-        mSendMsg.setOnClickListener(this);
-
-    }
-
-    private void initDatas() {
-
-        mDatas = new ArrayList<>();
-        mDatas .add(new ChatMessage("你好,小木为你服务", ChatMessage.Type.INCOMING,new Date()));
-        mDatas .add(new ChatMessage("你好", ChatMessage.Type.OUTCOMING,new Date()));
-        mChatMessageAdapter = new ChatMessageAdapter(this,mDatas);
-
-        mChatListview.setAdapter(mChatMessageAdapter);
-
-    }
-
-    private void initView() {
-
-        mChatListview = (ListView) findViewById(R.id.mian_listview);
-        mInputMsg = (EditText) findViewById(R.id.input_msg);
-        mSendMsg = (Button) findViewById(R.id.send_msg);
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.send_msg:
+        mSendMsg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 final String toMsg = mInputMsg.getText().toString();
 
                 if (TextUtils.isEmpty(toMsg)){
-                   Toast.makeText(TulingRoBotActivity.this,"发送消息不能为空",Toast.LENGTH_SHORT).show();
-                    return;                }
+                    Toast.makeText(TulingRoBotActivity.this,"发送消息不能为空",Toast.LENGTH_SHORT).show();
+                    return;
+
+                }
 
                 ChatMessage toMessage = new ChatMessage();
                 toMessage.setDate(new Date());
@@ -109,8 +87,29 @@ public class TulingRoBotActivity extends Activity implements View.OnClickListene
                     }
                 }.start();
 
-                break;
+            }
+        });
 
-        }
     }
+
+    private void initDatas() {
+
+        mDatas = new ArrayList<>();
+        //mDatas .add(new ChatMessage("你好,小木为你服务", ChatMessage.Type.INCOMING,new Date()));
+        //mDatas .add(new ChatMessage("你好", ChatMessage.Type.OUTCOMING,new Date()));
+        mChatMessageAdapter = new ChatMessageAdapter(this,mDatas);
+
+        mChatListview.setAdapter(mChatMessageAdapter);
+
+    }
+
+    private void initView() {
+
+        mChatListview = (ListView) findViewById(R.id.mian_listview);
+        mInputMsg = (EditText) findViewById(R.id.input_msg);
+        mSendMsg = (Button) findViewById(R.id.send_msg);
+
+    }
+
 }
+

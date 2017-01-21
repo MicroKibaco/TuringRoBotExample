@@ -16,7 +16,7 @@ import java.net.URLEncoder;
 import java.util.Date;
 
 /**
- * 封编写一个工具类实现消息的发送和接收到
+ * 编写一个工具类实现消息的发送和接收
  */
 
 public class HttpUtils {
@@ -44,8 +44,8 @@ public class HttpUtils {
 
         try {
 
-            gson.fromJson(jsonRes, Result.class);
-            chatMessage.setMsg(result.getText());
+            Result json = gson.fromJson(jsonRes, Result.class);
+            chatMessage.setMsg(json.getText());
 
         } catch (JsonSyntaxException e) {
 
