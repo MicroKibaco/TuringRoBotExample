@@ -95,8 +95,6 @@ public class TulingRoBotActivity extends Activity  {
     private void initDatas() {
 
         mDatas = new ArrayList<>();
-        //mDatas .add(new ChatMessage("你好,小木为你服务", ChatMessage.Type.INCOMING,new Date()));
-        //mDatas .add(new ChatMessage("你好", ChatMessage.Type.OUTCOMING,new Date()));
         mChatMessageAdapter = new ChatMessageAdapter(this,mDatas);
 
         mChatListview.setAdapter(mChatMessageAdapter);
