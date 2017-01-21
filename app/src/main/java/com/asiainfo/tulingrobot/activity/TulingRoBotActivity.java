@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 机器人
+ */
 
 public class TulingRoBotActivity extends Activity  {
 
