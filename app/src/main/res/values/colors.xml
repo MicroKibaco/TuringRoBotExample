@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="black">#372f31</color>
     <color name="white">#efeeee</color>
+    <color name="btnpress">#a2d57e</color>
+    <color name="btn_normal">#f6f4f4</color>
 </resources>

@@ -39,7 +39,9 @@
         </LinearLayout>
 
         <TextView
+                android:id="@+id/from_msg_info"
                 android:gravity="center"
+                android:textSize="16sp"
                 android:background="@drawable/chatfrom_bg_focused"
                 android:text="你好"
                 android:layout_width="wrap_content"

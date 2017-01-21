@@ -57,4 +57,14 @@
 
 
     </RelativeLayout>
+
+    <ListView
+            android:dividerHeight="5dp"
+            android:layout_above="@id/mian_bottom"
+            android:id="@+id/mian_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/main_top"
+            android:divider="@null"
+            />
 </RelativeLayout>
