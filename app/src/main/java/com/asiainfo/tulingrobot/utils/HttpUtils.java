@@ -45,7 +45,7 @@ public class HttpUtils {
         try {
 
             Result json = gson.fromJson(jsonRes, Result.class);
-            chatMessage.setMsg(json.getText());
+            chatMessage.setMsg(json.getText());//网络请求失败 报空指针异常
 
         } catch (JsonSyntaxException e) {
 
